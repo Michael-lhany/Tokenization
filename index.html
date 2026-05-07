@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LLM Tokenization Simulator</title>
   <meta name="description" content="Interactive simulator showing how text is tokenized by different algorithms (BPE, word-level, character-level)." />
+  <script>
+    (function () {
+      const analyticsToken = "130a5f2f20254cdea8edfe001cabdd80";
+      if (!analyticsToken || analyticsToken === "130a5f2f20254cdea8edfe001cabdd80") return;
+      const script = document.createElement("script");
+      script.defer = true;
+      script.src = "https://static.cloudflareinsights.com/beacon.min.js";
+      script.setAttribute("data-cf-beacon", JSON.stringify({ token: analyticsToken }));
+      document.head.appendChild(script);
+    }());
+  </script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>

@@ -19,6 +19,12 @@ python -m http.server 8000
 # then open http://localhost:8000
 ```
 
+## Optional analytics
+
+The site includes an optional Cloudflare Web Analytics loader in `index.html`. It is disabled by default.
+
+To enable it, replace `PASTE_CLOUDFLARE_WEB_ANALYTICS_TOKEN` in `index.html` with your Cloudflare token.
+
 ## License
 
 This project is released under the MIT License. See `LICENSE`.
