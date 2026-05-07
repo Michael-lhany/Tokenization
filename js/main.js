@@ -27,6 +27,81 @@ document.addEventListener('DOMContentLoaded',()=>{
     "tion":306,"ation":307,"ment":308,"ness":309,
   };
 
+  const BPE_EXTRA_TOKENS=[
+    // Common words and fragments
+    "I","you","he","she","it","we","they","me","him","her","us","them",
+    "my","your","his","their","our","mine","yours","hers","ours","theirs",
+    "this","that","these","those","what","which","who","whom","whose",
+    "when","where","why","how","not","no","yes","maybe","all","any","some","none",
+    "one","two","three","four","five","first","last","new","old","good","bad","big","small",
+    "make","makes","made","do","does","did","done","say","says","said","go","goes","went","gone",
+    "get","gets","got","gotten","take","takes","took","taken","see","sees","saw","seen",
+    "think","thought","know","knows","knew","known","want","wants","wanted","need","needs","needed",
+    "like","likes","liked","love","loves","loved","use","uses","used","work","works","worked",
+    "time","times","day","days","week","weeks","month","months","year","years",
+    "person","people","man","men","woman","women","child","children","team","teams",
+    "question","questions","answer","answers","problem","problems","example","examples","idea","ideas",
+    "text","texts","token","tokens","tokenize","tokenizes","tokenized","tokenizing",
+    "model","models","language","languages","data","datum","input","output","prompt","prompts",
+    "system","systems","code","codes","coding","program","programs","programming","function","functions",
+    "variable","variables","value","values","class","classes","object","objects","array","arrays",
+    "string","strings","number","numbers","boolean","booleans","true","false","null","undefined",
+    "html","css","javascript","json","api","rest","http","https","github","git","pages",
+
+    // High-frequency function words with leading-space variants
+    " the"," The"," a"," A"," an"," An"," and"," And"," or"," Or"," but"," But"," if"," If",
+    " of"," Of"," in"," In"," to"," To"," for"," For"," on"," On"," at"," At"," by"," By",
+    " with"," With"," from"," From"," as"," As"," is"," Is"," are"," Are"," was"," Was"," were"," Were",
+    " be"," Be"," been"," Been"," being"," Being"," have"," Have"," has"," Has"," had"," Had",
+    " do"," Do"," does"," Does"," did"," Did"," can"," Can"," could"," Could"," should"," Should",
+    " would"," Would"," will"," Will"," may"," May"," might"," Might"," must"," Must"," shall"," Shall",
+    " not"," Not"," no"," No"," yes"," Yes"," this"," This"," that"," That"," these"," These"," those"," Those",
+
+    // Common suffixes / prefixes and subword pieces
+    "un","re","pre","post","anti","non","over","under","inter","trans","sub","super","micro","macro",
+    "able","ible","ally","ance","ence","er","est","ful","hood","ism","ist","ity","ive","less","ment",
+    "ship","sion","tion","ation","ization","ative","ous","ness","ingly","edly","wise","ward","wards",
+    "ing","ed","ly","er","est","s","es","d","n","t",
+    "tion","sion","cian","tive","graph","logy","phile","phone","scope","meter","nomy",
+
+    // Common verb stems and inflections
+    "run","runs","ran","running","walk","walks","walked","walking","talk","talks","talked","talking",
+    "play","plays","played","playing","read","reads","readed","reading","write","writes","wrote","written",
+    "open","opens","opened","opening","close","closes","closed","closing","start","starts","started","starting",
+    "create","creates","created","creating","build","builds","built","building","deploy","deploys","deployed","deploying",
+
+    // Common punctuation / formatting / separators
+    " ","\n","\t",".",",",";",":","!","?","-","_","/","\\","'","\"","(",")","[","]","{","}","<",">",
+    "...","--","—","…","#","@","$","%","&","*","+","=","|",
+
+    // Everyday phrases
+    " good"," great"," better"," best"," bad"," worse"," worst"," important"," simple"," complex"," modern",
+    " example"," examples"," maybe"," please"," thanks"," thank"," hello"," hi"," welcome"," bye",
+    " today"," tomorrow"," yesterday"," now"," later"," soon"," always"," never"," often"," sometimes",
+
+    // Numbers and ordinals
+    "0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20",
+    "21","22","23","24","25","26","27","28","29","30","100","1000","1st","2nd","3rd","4th","5th",
+
+    // Web / coding / UI terms
+    "user","users","page","pages","site","sites","browser","browsers","local","remote","static","dynamic",
+    "server","servers","client","clients","request","response","render","renders","rendered","rendering",
+    "click","clicks","clicked","clicking","hover","hovers","hovered","hovering","load","loads","loaded","loading",
+    "center","centers","centered","centering","layout","layouts","style","styles","styled","styling",
+    "tokenization","tokenizer","tokenizers","vocab","vocabulary","merge","merges","merged","merging",
+
+    // Common Markdown / HTML / URL pieces
+    "https://","http://","www.",".com",".org",".net",".io",".dev",".app",".html",".css",".js","/index.html",
+    "<div>","</div>","<span>","</span>","<script>","</script>","<style>","</style>","<main>","</main>",
+  ];
+
+  let nextVocabId=1500;
+  BPE_EXTRA_TOKENS.forEach(token=>{
+    if(BPE_VOCAB[token]===undefined){
+      BPE_VOCAB[token]=nextVocabId++;
+    }
+  });
+
   function bpeTokenize(text){
     if(!text.trim())return[];
     let tokens=[];let i=0;let id=1400;const idCache={};
