@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     // Common words and fragments
     "I","you","he","she","it","we","they","me","him","her","us","them",
     "my","your","his","their","our","mine","yours","hers","ours","theirs",
-    "this","that","these","those","what","which","who","whom","whose",
+    "this","that","these","those","what","which","who","whom","whose","fact","facts","information","data","details","info",
     "when","where","why","how","not","no","yes","maybe","all","any","some","none",
     "one","two","three","four","five","first","last","new","old","good","bad","big","small",
     "make","makes","made","do","does","did","done","say","says","said","go","goes","went","gone",
