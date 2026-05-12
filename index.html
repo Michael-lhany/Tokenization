@@ -12,101 +12,37 @@
     <div class="container">
       <a class="brand" href="./">LLM Tokenization Simulator</a>
       <nav class="nav" aria-label="Primary">
-        <a href="#sim">Simulator</a>
-        <a href="#about">About</a>
-        <a href="#usage">Usage</a>
+        <a href="learn.html">Learn</a>
+        <a href="simulator.html">Simulator</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero" id="about">
+    <section class="hero" id="home">
       <p class="eyebrow">Interactive demo</p>
       <h1>LLM Tokenization Simulator</h1>
-      <p class="hero-copy">An interactive visualizer demonstrating how different tokenization strategies split text into tokens.</p>
-    </section>
+      <p class="hero-copy">Choose where to start. One page explains tokenization in plain language, the other opens the interactive simulator.</p>
 
-    <section class="wrap" id="sim" aria-labelledby="sim-title">
-      <h2 id="sim-title">Tokenization simulator</h2>
-      <p class="sub">Type any text to see how a language model breaks it into tokens before processing.</p>
-
-      <textarea id="inp" placeholder="e.g. Hello, world! Tokenization is fascinating.">Hello, world! Tokenization is fascinating.</textarea>
-
-      <div class="controls">
-        <label for="algo" style="font-size:13px;color:var(--color-text-secondary)">Algorithm:</label>
-        <select id="algo">
-          <option value="bpe">BPE (Byte-Pair Encoding)</option>
-          <option value="word">Whitespace / word-level</option>
-          <option value="char">Character-level</option>
-        </select>
+      <div class="choice-grid" aria-label="Home options">
+        <a class="choice-card" href="learn.html">
+          <span class="choice-kicker">Option 1</span>
+          <h2>Tell me more about tokenization</h2>
+          <p>Open a focused guide that explains what tokens are and why they matter.</p>
+          <span class="choice-action">Learn the basics</span>
+        </a>
+        <a class="choice-card choice-card-accent" href="simulator.html">
+          <span class="choice-kicker">Option 2</span>
+          <h2>Open the simulator</h2>
+          <p>Jump straight to the interactive demo and inspect tokens, IDs, and character chunks.</p>
+          <span class="choice-action">Go to simulator</span>
+        </a>
       </div>
-
-      <div class="stats">
-        <div class="stat"><div class="stat-label">Characters</div><div class="stat-val" id="s-char">0</div></div>
-        <div class="stat"><div class="stat-label">Tokens</div><div class="stat-val" id="s-tok">0</div></div>
-        <div class="stat"><div class="stat-label">Chars per token</div><div class="stat-val" id="s-ratio">0</div></div>
-      </div>
-
-      <div class="tab-row" role="tablist" aria-label="Tokenization views">
-        <button class="tab on" type="button" data-tab="vis">Token view</button>
-        <button class="tab" type="button" data-tab="ids">Token IDs</button>
-        <button class="tab" type="button" data-tab="chars">Char breakdown</button>
-        <button class="tab" type="button" data-tab="learn">How it works</button>
-      </div>
-
-      <div id="tab-vis">
-        <div class="legend" id="legend"></div>
-        <div class="token-row" id="tok-row"><span class="empty">Start typing above...</span></div>
-        <p class="hint">Click a token to inspect it</p>
-        <div id="tok-detail"></div>
-      </div>
-
-      <div id="tab-ids" style="display:none">
-        <div class="section-title">Token ID sequence</div>
-        <div id="id-row" class="id-row"></div>
-        <p class="hint">Each number is the vocabulary index the model sees — never raw text.</p>
-      </div>
-
-      <div id="tab-chars" style="display:none">
-        <div class="section-title">Character → token mapping</div>
-        <div class="char-row" id="char-row"></div>
-        <div class="char-legend">
-          <span class="legend-item"><span class="legend-swatch" style="background:#B5D4F4"></span>Start of token</span>
-          <span class="legend-item"><span class="legend-swatch" style="background:#E6F1FB"></span>Continuation</span>
-        </div>
-      </div>
-
-      <div id="tab-learn" style="display:none">
-        <div class="info-box">
-          <div class="info-box-title" id="learn-title"></div>
-          <div class="info-body" id="learn-body"></div>
-        </div>
-        <div id="learn-facts" class="learn-facts"></div>
-      </div>
-    </section>
-
-    <section class="info-grid" id="usage">
-      <article class="card">
-        <h3>About</h3>
-        <p>This page demonstrates tokenization concepts for learning and experimentation.</p>
-      </article>
-      <article class="card">
-        <h3>GitHub Repo</h3>
-        <p>View the <a class="repo-link" href="https://github.com/Michael-lhany/Tokenization" target="_blank" rel="noreferrer">repo</a> for this project.</p>
-      </article>
-      <article class="card">
-        <h3>Source</h3>
-        <p>The source code for this demo is included in the repository; use it under the terms of the included license.</p>
-      </article>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">© 2026 LLM Tokenization Simulator</div>
   </footer>
-
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "130a5f2f20254cdea8edfe001cabdd80"}'></script><!-- End Cloudflare Web Analytics -->
-
-  <script src="js/main.js" defer></script>
 </body>
 </html>

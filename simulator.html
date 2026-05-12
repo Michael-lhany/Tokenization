@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tokenization Simulator</title>
+  <meta name="description" content="Interactive simulator showing how text is tokenized by different algorithms." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="simulator-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="./">LLM Tokenization Simulator</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="./">Home</a>
+        <a href="learn.html">Learn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Interactive demo</p>
+      <h1>Tokenization simulator</h1>
+      <p class="hero-copy">Type any text, switch algorithms, and inspect how tokens, IDs, and character chunks are formed.</p>
+    </section>
+
+    <section class="wrap" id="sim" aria-labelledby="sim-title">
+      <h2 id="sim-title">Try it here</h2>
+      <p class="sub">Use the controls below to compare tokenization strategies side by side.</p>
+
+      <textarea id="inp" placeholder="e.g. Hello, world! Tokenization is fascinating.">Hello, world! Tokenization is fascinating.</textarea>
+
+      <div class="controls">
+        <label for="algo" style="font-size:13px;color:var(--color-text-secondary)">Algorithm:</label>
+        <select id="algo">
+          <option value="bpe">BPE (Byte-Pair Encoding)</option>
+          <option value="word">Whitespace / word-level</option>
+          <option value="char">Character-level</option>
+        </select>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Characters</div><div class="stat-val" id="s-char">0</div></div>
+        <div class="stat"><div class="stat-label">Tokens</div><div class="stat-val" id="s-tok">0</div></div>
+        <div class="stat"><div class="stat-label">Chars per token</div><div class="stat-val" id="s-ratio">0</div></div>
+      </div>
+
+      <div class="tab-row" role="tablist" aria-label="Tokenization views">
+        <button class="tab on" type="button" data-tab="vis">Token view</button>
+        <button class="tab" type="button" data-tab="ids">Token IDs</button>
+        <button class="tab" type="button" data-tab="chars">Char breakdown</button>
+        <button class="tab" type="button" data-tab="learn">How it works</button>
+      </div>
+
+      <div id="tab-vis" class="tab-panel">
+        <div class="legend" id="legend"></div>
+        <div class="token-row" id="tok-row"><span class="empty">Start typing above...</span></div>
+        <p class="hint">Click a token to inspect it</p>
+        <div id="tok-detail"></div>
+      </div>
+
+      <div id="tab-ids" class="tab-panel" style="display:none">
+        <div class="section-title">Token ID sequence</div>
+        <div id="id-row" class="id-row"></div>
+        <p class="hint">Each number is the vocabulary index the model sees — never raw text.</p>
+      </div>
+
+      <div id="tab-chars" class="tab-panel" style="display:none">
+        <div class="section-title">Character → token mapping</div>
+        <div class="char-row" id="char-row"></div>
+        <div class="char-legend">
+          <span class="legend-item"><span class="legend-swatch" style="background:#B5D4F4"></span>Start of token</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E6F1FB"></span>Continuation</span>
+        </div>
+      </div>
+
+      <div id="tab-learn" class="tab-panel" style="display:none">
+        <div class="info-box">
+          <div class="info-box-title" id="learn-title"></div>
+          <div class="info-body" id="learn-body"></div>
+        </div>
+        <div id="learn-facts" class="learn-facts"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 LLM Tokenization Simulator</div>
+  </footer>
+
+  <script src="js/main.js?v=4" defer></script>
+</body>
+</html>

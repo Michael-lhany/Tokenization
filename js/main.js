@@ -104,15 +104,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   function bpeTokenize(text){
     if(!text.trim())return[];
+    const vocab=BPE_VOCAB;
     let tokens=[];let i=0;let id=1400;const idCache={};
     while(i<text.length){
       let best=null,bestLen=0;
       for(let l=Math.min(20,text.length-i);l>=1;l--){
         const sub=text.slice(i,i+l);
-        if(BPE_VOCAB[sub]!==undefined&&l>bestLen){best=sub;bestLen=l;}
+        if(vocab[sub]!==undefined&&l>bestLen){best=sub;bestLen=l;}
       }
       if(best){
-        const tid=BPE_VOCAB[best];tokens.push({text:best,id:tid,start:i,end:i+bestLen});i+=bestLen;
+        const tid=vocab[best];tokens.push({text:best,id:tid,start:i,end:i+bestLen});i+=bestLen;
       } else {
         const ch=text[i];if(!idCache[ch])idCache[ch]=id++;tokens.push({text:ch,id:idCache[ch],start:i,end:i+1});i++;
       }
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   function tokenize(text,algo){if(algo==='bpe')return bpeTokenize(text);if(algo==='word')return wordTokenize(text);return charTokenize(text);}
 
   const algoInfo={
-    bpe:{title:'Byte-Pair Encoding (BPE)',body:'BPE starts with individual characters and iteratively merges the most frequent adjacent pairs into a single token. It strikes a balance: common words become single tokens, rare words are split into meaningful subword pieces. GPT-2, GPT-4, and LLaMA all use variants of BPE.',facts:[{label:'Used by',val:'GPT-2, GPT-3, GPT-4, LLaMA'},{label:'Vocabulary size',val:'~50,000 – 100,000'},{label:'Handles rare words',val:'Yes — splits into subwords'},{label:'Multilingual',val:'Yes, with byte fallback'}]},
+    bpe:{title:'Byte-Pair Encoding (BPE)',body:'BPE starts with individual characters or bytes and repeatedly merges the most frequent adjacent pairs found in a training corpus. Those learned merges are then reused at inference time, which is why common words often become single tokens while rarer words stay split into subword pieces. GPT-style models and many LLaMA-family tokenizers use variants of this approach.',facts:[{label:'Used by',val:'GPT-2, GPT-3, GPT-4, LLaMA'},{label:'Vocabulary size',val:'~50,000 – 100,000'},{label:'Handles rare words',val:'Yes — splits into subwords'},{label:'Multilingual',val:'Yes, with byte fallback'}]},
     word:{title:'Whitespace / word-level tokenization',body:'The simplest approach: split on whitespace and punctuation. Fast and human-readable, but the vocabulary explodes with inflected forms and unknown words become a problem.',facts:[{label:'Used by',val:'Early NLP, simple pipelines'},{label:'Vocabulary size',val:'10,000 – 100,000+'},{label:'Handles rare words',val:'No — UNK token'},{label:'Multilingual',val:'Poor for agglutinative languages'}]},
     char:{title:'Character-level tokenization',body:'Every character is its own token. Vocabulary is tiny and handles any text, but sequences become very long.',facts:[{label:'Used by',val:'Some older RNNs, ByT5'},{label:'Vocabulary size',val:'256 – ~1,000'},{label:'Handles rare words',val:'Yes — always'},{label:'Sequence length',val:'Much longer than BPE'}]},
   };
