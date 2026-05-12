@@ -69,32 +69,26 @@
             <article class="card">
               <h3>Byte Pair Encoding</h3>
               <p>Starts with characters and repeatedly merges frequent pairs into larger pieces. This is common in GPT-style systems and many LLaMA-family models, usually with a byte-level fallback so any text can be represented.</p>
-              <p class="mini-note">Examples: GPT-2, GPT-3, GPT-4, LLaMA, Mistral-style tokenizers.</p>
             </article>
             <article class="card">
               <h3>WordPiece</h3>
               <p>Builds a vocabulary of subwords using a likelihood-based objective. It is widely used in BERT and related encoder models, and in some decoder models in the broader Transformer family.</p>
-              <p class="mini-note">Examples: BERT, ALBERT, many fine-tuned encoder stacks.</p>
             </article>
             <article class="card">
               <h3>SentencePiece</h3>
               <p>Treats text as raw Unicode and learns subword units directly from data. SentencePiece can train BPE or Unigram tokenizers, and it is common in many multilingual models.</p>
-              <p class="mini-note">Examples: T5, FLAN-T5, XLNet, ALBERT, several multilingual LLMs.</p>
             </article>
             <article class="card">
               <h3>Unigram</h3>
               <p>Starts with a large candidate vocabulary and removes pieces that are not useful. This often produces compact subword vocabularies and works well for multilingual text.</p>
-              <p class="mini-note">Examples: some SentencePiece-based models and multilingual systems.</p>
             </article>
             <article class="card">
               <h3>Byte-level tokenization</h3>
               <p>Represents text at the byte level, which guarantees every input can be encoded. It is more robust to unusual symbols, but the token sequences can be longer.</p>
-              <p class="mini-note">Examples: ByT5, CANINE, and GPT-style tokenizers with byte fallback.</p>
             </article>
             <article class="card">
               <h3>Character-level</h3>
               <p>Uses one token per character. This keeps the vocabulary tiny but produces very long sequences, so it is uncommon in large general-purpose LLMs.</p>
-              <p class="mini-note">Examples: some older RNN systems and byte/character research models.</p>
             </article>
           </div>
         </div>
