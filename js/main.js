@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     "who","whom","whose","what","which","whatever","whichever","whoever","whomever",
     "fact","facts","information","data","details","info","content","context","summary","summaries",
     "name","names","named","naming","nickname","nicknames","username","usernames",
+    "family","families","familial","family's","famile",
     "result","results","reason","reasons","answer","answers","question","questions","problem","problems",
     "example","examples","idea","ideas","topic","topics","word","words","sentence","sentences","phrase","phrases",
     "text","texts","token","tokens","tokenize","tokenizes","tokenized","tokenizing","tokenizer","tokenizers",
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     "one","two","three","four","five","first","second","third","last","new","old","good","bad","big","small",
     "today","tomorrow","yesterday","now","later","soon","always","never","often","sometimes","usually","rarely",
     "team","teams","person","people","man","men","woman","women","child","children","user","users",
+    "very","much",
     "time","times","day","days","week","weeks","month","months","year","years","hour","hours","minute","minutes",
     "local","remote","public","private","static","dynamic","simple","complex","modern","important","familiar",
 
@@ -71,6 +73,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     " more"," More"," less"," Less"," most"," Most"," many"," Many"," few"," Few"," first"," First"," last"," Last",
     " good"," Good"," bad"," Bad"," big"," Big"," small"," Small"," new"," New"," old"," Old"," simple"," Simple",
     " complex"," Complex"," modern"," Modern"," important"," Important"," example"," Example"," examples"," Examples",
+    " family"," Family"," families"," Families"," very"," Very"," much"," Much",
 
     // Common prefixes and subword pieces
     "un","re","pre","post","anti","non","over","under","inter","trans","sub","super","micro","macro",
@@ -104,6 +107,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     // Everyday phrases
     " good"," great"," better"," best"," bad"," worse"," worst"," important"," simple"," complex"," modern",
     " example"," examples"," maybe"," please"," thanks"," thank"," hello"," hi"," welcome"," bye",
+    " family"," families"," they"," They",
     " today"," tomorrow"," yesterday"," now"," later"," soon"," always"," never"," often"," sometimes",
 
     // Numbers and ordinals
