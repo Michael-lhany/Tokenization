@@ -7,7 +7,7 @@
   <meta name="description" content="A short guide explaining what tokenization is and why it matters for language models." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body class="learn-page">
   <header class="site-header">
     <div class="container">
       <a class="brand" href="./">LLM Tokenization Simulator</a>
@@ -26,89 +26,119 @@
     </section>
 
     <section class="wrap learn-overview" aria-labelledby="learn-title">
-      <h2 id="learn-title">Why it matters</h2>
-      <p class="sub">Tokenization affects cost, speed, multilingual support, and how well a model handles unfamiliar names or rare words. Smaller tokens give more flexibility, while larger tokens can be more efficient.</p>
+      <details class="learn-accordion" open>
+        <summary>
+          <span>
+            <span class="accordion-kicker">Section 1</span>
+            <span class="accordion-title">Why it matters</span>
+          </span>
+          <span class="accordion-hint">Click to hide or show</span>
+        </summary>
+        <div class="accordion-body">
+          <p class="sub">Tokenization affects cost, speed, multilingual support, and how well a model handles unfamiliar names or rare words. Smaller tokens give more flexibility, while larger tokens can be more efficient.</p>
 
-      <div class="info-grid info-grid-learn">
-        <article class="card">
-          <h3>Common strategies</h3>
-          <p>BPE, word-level, and character-level tokenization each make different tradeoffs between compactness and flexibility.</p>
-        </article>
-        <article class="card">
-          <h3>What you will see next</h3>
-          <p>The simulator shows token text, token IDs, character mapping, and a short explanation for each strategy.</p>
-        </article>
-        <article class="card">
-          <h3>Ready to explore?</h3>
-          <p>Try a sentence in the simulator and compare how different algorithms split the same text.</p>
-        </article>
-      </div>
+          <div class="info-grid info-grid-learn">
+            <article class="card">
+              <h3>Common strategies</h3>
+              <p>BPE, word-level, and character-level tokenization each make different tradeoffs between compactness and flexibility.</p>
+            </article>
+            <article class="card">
+              <h3>What you will see next</h3>
+              <p>The simulator shows token text, token IDs, character mapping, and a short explanation for each strategy.</p>
+            </article>
+            <article class="card">
+              <h3>Ready to explore?</h3>
+              <p>Try a sentence in the simulator and compare how different algorithms split the same text.</p>
+            </article>
+          </div>
+        </div>
+      </details>
 
-      <h2 style="margin-top:34px">Main tokenization techniques</h2>
-      <p class="sub">Most modern LLMs use subword tokenization, because it handles rare words better than pure word-level tokenization and keeps sequences shorter than character-level tokenization.</p>
+      <details class="learn-accordion">
+        <summary>
+          <span>
+            <span class="accordion-kicker">Section 2</span>
+            <span class="accordion-title">Main tokenization techniques</span>
+          </span>
+          <span class="accordion-hint">Click to hide or show</span>
+        </summary>
+        <div class="accordion-body">
+          <p class="sub">Most modern LLMs use subword tokenization, because it handles rare words better than pure word-level tokenization and keeps sequences shorter than character-level tokenization.</p>
 
-      <div class="info-grid info-grid-learn">
-        <article class="card">
-          <h3>Byte Pair Encoding</h3>
-          <p>Starts with characters and repeatedly merges frequent pairs into larger pieces. This is common in GPT-style systems and many LLaMA-family models, usually with a byte-level fallback so any text can be represented.</p>
-          <p class="mini-note">Examples: GPT-2, GPT-3, GPT-4, LLaMA, Mistral-style tokenizers.</p>
-        </article>
-        <article class="card">
-          <h3>WordPiece</h3>
-          <p>Builds a vocabulary of subwords using a likelihood-based objective. It is widely used in BERT and related encoder models, and in some decoder models in the broader Transformer family.</p>
-          <p class="mini-note">Examples: BERT, ALBERT, many fine-tuned encoder stacks.</p>
-        </article>
-        <article class="card">
-          <h3>SentencePiece</h3>
-          <p>Treats text as raw Unicode and learns subword units directly from data. SentencePiece can train BPE or Unigram tokenizers, and it is common in many multilingual models.</p>
-          <p class="mini-note">Examples: T5, FLAN-T5, XLNet, ALBERT, several multilingual LLMs.</p>
-        </article>
-        <article class="card">
-          <h3>Unigram</h3>
-          <p>Starts with a large candidate vocabulary and removes pieces that are not useful. This often produces compact subword vocabularies and works well for multilingual text.</p>
-          <p class="mini-note">Examples: some SentencePiece-based models and multilingual systems.</p>
-        </article>
-        <article class="card">
-          <h3>Byte-level tokenization</h3>
-          <p>Represents text at the byte level, which guarantees every input can be encoded. It is more robust to unusual symbols, but the token sequences can be longer.</p>
-          <p class="mini-note">Examples: ByT5, CANINE, and GPT-style tokenizers with byte fallback.</p>
-        </article>
-        <article class="card">
-          <h3>Character-level</h3>
-          <p>Uses one token per character. This keeps the vocabulary tiny but produces very long sequences, so it is uncommon in large general-purpose LLMs.</p>
-          <p class="mini-note">Examples: some older RNN systems and byte/character research models.</p>
-        </article>
-      </div>
+          <div class="info-grid info-grid-learn">
+            <article class="card">
+              <h3>Byte Pair Encoding</h3>
+              <p>Starts with characters and repeatedly merges frequent pairs into larger pieces. This is common in GPT-style systems and many LLaMA-family models, usually with a byte-level fallback so any text can be represented.</p>
+              <p class="mini-note">Examples: GPT-2, GPT-3, GPT-4, LLaMA, Mistral-style tokenizers.</p>
+            </article>
+            <article class="card">
+              <h3>WordPiece</h3>
+              <p>Builds a vocabulary of subwords using a likelihood-based objective. It is widely used in BERT and related encoder models, and in some decoder models in the broader Transformer family.</p>
+              <p class="mini-note">Examples: BERT, ALBERT, many fine-tuned encoder stacks.</p>
+            </article>
+            <article class="card">
+              <h3>SentencePiece</h3>
+              <p>Treats text as raw Unicode and learns subword units directly from data. SentencePiece can train BPE or Unigram tokenizers, and it is common in many multilingual models.</p>
+              <p class="mini-note">Examples: T5, FLAN-T5, XLNet, ALBERT, several multilingual LLMs.</p>
+            </article>
+            <article class="card">
+              <h3>Unigram</h3>
+              <p>Starts with a large candidate vocabulary and removes pieces that are not useful. This often produces compact subword vocabularies and works well for multilingual text.</p>
+              <p class="mini-note">Examples: some SentencePiece-based models and multilingual systems.</p>
+            </article>
+            <article class="card">
+              <h3>Byte-level tokenization</h3>
+              <p>Represents text at the byte level, which guarantees every input can be encoded. It is more robust to unusual symbols, but the token sequences can be longer.</p>
+              <p class="mini-note">Examples: ByT5, CANINE, and GPT-style tokenizers with byte fallback.</p>
+            </article>
+            <article class="card">
+              <h3>Character-level</h3>
+              <p>Uses one token per character. This keeps the vocabulary tiny but produces very long sequences, so it is uncommon in large general-purpose LLMs.</p>
+              <p class="mini-note">Examples: some older RNN systems and byte/character research models.</p>
+            </article>
+          </div>
+        </div>
+      </details>
 
-      <h2 style="margin-top:34px">How major model families usually tokenize</h2>
-      <p class="sub">There is no single tokenizer for every model family, and even within the same family the tokenizer can change between versions. These are the common patterns you will usually see.</p>
+      <details class="learn-accordion">
+        <summary>
+          <span>
+            <span class="accordion-kicker">Section 3</span>
+            <span class="accordion-title">How major model families usually tokenize</span>
+          </span>
+          <span class="accordion-hint">Click to hide or show</span>
+        </summary>
+        <div class="accordion-body">
+          <p class="sub">There is no single tokenizer for every model family, and even within the same family the tokenizer can change between versions. These are the common patterns you will usually see.</p>
 
-      <div class="info-grid info-grid-learn">
-        <article class="card">
-          <h3>GPT-style models</h3>
-          <p>Typically use BPE variants with byte fallback. This keeps the vocabulary compact and helps the model handle punctuation, code, and unusual words reliably.</p>
-        </article>
-        <article class="card">
-          <h3>LLaMA-style models</h3>
-          <p>Usually use a SentencePiece-derived BPE tokenizer, again with byte-aware handling in many implementations. The exact vocabulary depends on the checkpoint.</p>
-        </article>
-        <article class="card">
-          <h3>BERT-style models</h3>
-          <p>Usually use WordPiece. This works well for masked language modeling and encoder tasks, where the model benefits from stable subword boundaries.</p>
-        </article>
-        <article class="card">
-          <h3>T5 / FLAN-T5</h3>
-          <p>Use SentencePiece, commonly trained with a unigram or subword objective. This gives a strong balance between vocabulary size and coverage.</p>
-        </article>
-        <article class="card">
-          <h3>ByT5 / CANINE</h3>
-          <p>Use byte-level or character-aware tokenization. These models trade longer sequences for stronger robustness on noisy text and multilingual inputs.</p>
-        </article>
-        <article class="card">
-          <h3>Multilingual open models</h3>
-          <p>Many multilingual LLMs use SentencePiece or byte-level BPE because they handle many writing systems and scripts more gracefully than word-only methods.</p>
-        </article>
-      </div>
+          <div class="info-grid info-grid-learn">
+            <article class="card">
+              <h3>GPT-style models</h3>
+              <p>Typically use BPE variants with byte fallback. This keeps the vocabulary compact and helps the model handle punctuation, code, and unusual words reliably.</p>
+            </article>
+            <article class="card">
+              <h3>LLaMA-style models</h3>
+              <p>Usually use a SentencePiece-derived BPE tokenizer, again with byte-aware handling in many implementations. The exact vocabulary depends on the checkpoint.</p>
+            </article>
+            <article class="card">
+              <h3>BERT-style models</h3>
+              <p>Usually use WordPiece. This works well for masked language modeling and encoder tasks, where the model benefits from stable subword boundaries.</p>
+            </article>
+            <article class="card">
+              <h3>T5 / FLAN-T5</h3>
+              <p>Use SentencePiece, commonly trained with a unigram or subword objective. This gives a strong balance between vocabulary size and coverage.</p>
+            </article>
+            <article class="card">
+              <h3>ByT5 / CANINE</h3>
+              <p>Use byte-level or character-aware tokenization. These models trade longer sequences for stronger robustness on noisy text and multilingual inputs.</p>
+            </article>
+            <article class="card">
+              <h3>Multilingual open models</h3>
+              <p>Many multilingual LLMs use SentencePiece or byte-level BPE because they handle many writing systems and scripts more gracefully than word-only methods.</p>
+            </article>
+          </div>
+        </div>
+      </details>
 
       <div class="choice-grid" style="margin-top:28px">
         <a class="choice-card" href="./">
