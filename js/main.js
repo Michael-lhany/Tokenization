@@ -31,24 +31,34 @@ document.addEventListener('DOMContentLoaded',()=>{
     // Common words and fragments
     "I","you","he","she","it","we","they","me","him","her","us","them",
     "my","your","his","their","our","mine","yours","hers","ours","theirs",
-    "this","that","these","those","what","which","who","whom","whose","fact","facts","information","data","details","info",
-    "when","where","why","how","not","no","yes","maybe","all","any","some","none",
-    "one","two","three","four","five","first","last","new","old","good","bad","big","small",
-    "make","makes","made","do","does","did","done","say","says","said","go","goes","went","gone",
-    "get","gets","got","gotten","take","takes","took","taken","see","sees","saw","seen",
-    "think","thought","know","knows","knew","known","want","wants","wanted","need","needs","needed",
-    "like","likes","liked","love","loves","loved","use","uses","used","work","works","worked",
-    "time","times","day","days","week","weeks","month","months","year","years",
-    "person","people","man","men","woman","women","child","children","team","teams",
-    "question","questions","answer","answers","problem","problems","example","examples","idea","ideas",
-    "text","texts","token","tokens","tokenize","tokenizes","tokenized","tokenizing",
-    "model","models","language","languages","data","datum","input","output","prompt","prompts",
-    "system","systems","code","codes","coding","program","programs","programming","function","functions",
-    "variable","variables","value","values","class","classes","object","objects","array","arrays",
-    "string","strings","number","numbers","boolean","booleans","true","false","null","undefined",
-    "html","css","javascript","json","api","rest","http","https","github","git","pages",
+    "this","that","these","those","there","here","where","when","why","how",
+    "who","whom","whose","what","which","whatever","whichever","whoever","whomever",
+    "fact","facts","information","data","details","info","content","context","summary","summaries",
+    "name","names","named","naming","nickname","nicknames","username","usernames",
+    "result","results","reason","reasons","answer","answers","question","questions","problem","problems",
+    "example","examples","idea","ideas","topic","topics","word","words","sentence","sentences","phrase","phrases",
+    "text","texts","token","tokens","tokenize","tokenizes","tokenized","tokenizing","tokenizer","tokenizers",
+    "model","models","language","languages","system","systems","input","output","prompt","prompts","response","responses",
+    "code","codes","coding","program","programs","programming","function","functions","variable","variables",
+    "value","values","class","classes","object","objects","array","arrays","string","strings","number","numbers",
+    "boolean","booleans","true","false","null","undefined","undefined","object","objects","return","returns",
+    "create","creates","created","creating","build","builds","built","building","learn","learns","learned","learning",
+    "use","uses","used","using","work","works","worked","working","make","makes","made","making",
+    "see","sees","saw","seen","show","shows","showed","showing","find","finds","found","finding",
+    "know","knows","knew","known","think","thinks","thought","thinking","need","needs","needed","needing",
+    "want","wants","wanted","wanting","like","likes","liked","liking","love","loves","loved","loving",
+    "get","gets","got","gotten","getting","take","takes","took","taken","taking","give","gives","gave","given","giving",
+    "say","says","said","saying","go","goes","went","gone","going","run","runs","ran","running",
+    "do","does","did","done","doing","have","has","had","having","be","is","are","was","were","been","being",
+    "can","could","should","would","will","may","might","must","shall",
+    "not","no","yes","maybe","all","any","some","none","most","many","few","more","less",
+    "one","two","three","four","five","first","second","third","last","new","old","good","bad","big","small",
+    "today","tomorrow","yesterday","now","later","soon","always","never","often","sometimes","usually","rarely",
+    "team","teams","person","people","man","men","woman","women","child","children","user","users",
+    "time","times","day","days","week","weeks","month","months","year","years","hour","hours","minute","minutes",
+    "local","remote","public","private","static","dynamic","simple","complex","modern","important","familiar",
 
-    // High-frequency function words with leading-space variants
+    // Common leading-space words
     " the"," The"," a"," A"," an"," An"," and"," And"," or"," Or"," but"," But"," if"," If",
     " of"," Of"," in"," In"," to"," To"," for"," For"," on"," On"," at"," At"," by"," By",
     " with"," With"," from"," From"," as"," As"," is"," Is"," are"," Are"," was"," Was"," were"," Were",
@@ -56,20 +66,37 @@ document.addEventListener('DOMContentLoaded',()=>{
     " do"," Do"," does"," Does"," did"," Did"," can"," Can"," could"," Could"," should"," Should",
     " would"," Would"," will"," Will"," may"," May"," might"," Might"," must"," Must"," shall"," Shall",
     " not"," Not"," no"," No"," yes"," Yes"," this"," This"," that"," That"," these"," These"," those"," Those",
+    " there"," There"," here"," Here"," where"," Where"," when"," When"," why"," Why"," how"," How",
+    " what"," What"," which"," Which"," who"," Who"," whom"," Whom"," whose"," Whose",
+    " more"," More"," less"," Less"," most"," Most"," many"," Many"," few"," Few"," first"," First"," last"," Last",
+    " good"," Good"," bad"," Bad"," big"," Big"," small"," Small"," new"," New"," old"," Old"," simple"," Simple",
+    " complex"," Complex"," modern"," Modern"," important"," Important"," example"," Example"," examples"," Examples",
 
-    // Common suffixes / prefixes and subword pieces
+    // Common prefixes and subword pieces
     "un","re","pre","post","anti","non","over","under","inter","trans","sub","super","micro","macro",
-    "able","ible","ally","ance","ence","er","est","ful","hood","ism","ist","ity","ive","less","ment",
+    "able","ible","ally","ance","ence","ary","dom","eer","er","est","ful","hood","ism","ist","ity","ive","less","ment",
     "ship","sion","tion","ation","ization","ative","ous","ness","ingly","edly","wise","ward","wards",
-    "ing","ed","ly","er","est","s","es","d","n","t",
-    "tion","sion","cian","tive","graph","logy","phile","phone","scope","meter","nomy",
+    "ing","ed","ly","er","est","s","es","d","n","t","x",
+    "tion","sion","cian","tive","graph","logy","phile","phone","scope","meter","nomy","ment","press","pose","form","view",
 
-    // Common verb stems and inflections
+    // Common character pairings and short chunks
+    "th","he","in","er","an","re","on","at","en","nd","ti","es","or","te","of","ed","is","it","al","ar",
+    "st","to","nt","ng","se","ha","as","ou","io","le","ve","co","me","de","hi","ri","ro","ic","ne",
+    "ea","ra","ce","li","ch","ll","be","ma","si","om","ur","ca","el","ta","la","di","fo","no","pe",
+    "ec","pr","pl","tr","cl","qu","wh","ck","sh","ph","gh","oo","ee","ea","ai","ay","ow","ou","oi",
+    "en ","th ","re ","in ","er ","an ","on ","at ","to ","of ","is ","it ","or ","al ","ar ","ng ","ed ",
+    "ing ","tion ","ment ","ness ","able ","ible ","ally ","ous ","ive ","ize ","ise ","ize","ise", "en", "th",
+
+    // Common verbs and inflections
     "run","runs","ran","running","walk","walks","walked","walking","talk","talks","talked","talking",
     "play","plays","played","playing","read","reads","readed","reading","write","writes","wrote","written",
     "open","opens","opened","opening","close","closes","closed","closing","start","starts","started","starting",
     "create","creates","created","creating","build","builds","built","building","deploy","deploys","deployed","deploying",
+    "learn","learns","learned","learning","show","shows","showed","showing","explain","explains","explained","explaining",
+    "compare","compares","compared","comparing","choose","chooses","chose","chosen","choosing","remove","removes","removed","removing",
+    "add","adds","added","adding","use","uses","used","using","make","makes","made","making","keep","keeps","kept","keeping",
 
+    // High-frequency function words with leading-space variants
     // Common punctuation / formatting / separators
     " ","\n","\t",".",",",";",":","!","?","-","_","/","\\","'","\"","(",")","[","]","{","}","<",">",
     "...","--","—","…","#","@","$","%","&","*","+","=","|",
@@ -84,14 +111,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     "21","22","23","24","25","26","27","28","29","30","100","1000","1st","2nd","3rd","4th","5th",
 
     // Web / coding / UI terms
-    "user","users","page","pages","site","sites","browser","browsers","local","remote","static","dynamic",
-    "server","servers","client","clients","request","response","render","renders","rendered","rendering",
-    "click","clicks","clicked","clicking","hover","hovers","hovered","hovering","load","loads","loaded","loading",
-    "center","centers","centered","centering","layout","layouts","style","styles","styled","styling",
-    "tokenization","tokenizer","tokenizers","vocab","vocabulary","merge","merges","merged","merging",
+    "user","users","page","pages","site","sites","browser","browsers","server","servers","client","clients",
+    "request","requests","response","responses","render","renders","rendered","rendering","click","clicks","clicked","clicking",
+    "hover","hovers","hovered","hovering","load","loads","loaded","loading","center","centers","centered","centering",
+    "layout","layouts","style","styles","styled","styling","tokenization","tokenizer","tokenizers","vocab","vocabulary",
+    "merge","merges","merged","merging","learn","learned","learns","learning","section","sections","accordion","accordions",
+    "simulator","simulate","simulated","simulating","example","examples","basic","basics","advanced","advanced","model","models",
+    "home","learn","open","close","choose","selected","selecting","choose","choice","choices","visible","hidden",
 
     // Common Markdown / HTML / URL pieces
-    "https://","http://","www.",".com",".org",".net",".io",".dev",".app",".html",".css",".js","/index.html",
+    "https://","http://","www.",".com",".org",".net",".io",".dev",".app",".html",".css",".js","/index.html","/learn.html","/simulator.html",
     "<div>","</div>","<span>","</span>","<script>","</script>","<style>","</style>","<main>","</main>",
   ];
 
