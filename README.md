@@ -1,6 +1,8 @@
 # LLM Tokenization Simulator
 
-Interactive demo that visualizes how different tokenization strategies (BPE, word-level, character-level) split text into tokens. This repository is designed to be hosted as a static site (GitHub Pages).
+Interactive website demo that visualizes how different tokenization strategies (BPE, word-level, character-level) split text into tokens. This repository is designed to be hosted as a static site (GitHub Pages).
+
+Website link: https://tokenization-w4wf.onrender.com/
 
 ## Files
 
